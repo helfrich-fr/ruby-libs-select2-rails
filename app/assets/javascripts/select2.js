@@ -3189,7 +3189,13 @@ the specific language governing permissions and limitations under the Apache Lic
         dropdownCssClass: "",
         formatResult: function(result, container, query, escapeMarkup) {
             var markup=[];
-            markMatch(result.text, query.term, markup, escapeMarkup);
+            if (typeof result.text !== "undefined") { 
+                markMatch(result.text, query.term, markup, escapeMarkup);
+            }
+            else {
+                debugger;
+            }
+
             return markup.join("");
         },
         formatSelection: function (data, container, escapeMarkup) {
